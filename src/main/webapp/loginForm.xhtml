@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <f:view>
+        <h:head>
+
+        </h:head>
+        <body>
+
+            <ui:composition  template="./resources/templates/login.xhtml" >
+
+                <ui:define name="content">
+
+
+
+                    <div class="login-box">
+
+                       
+
+                        <div class="login-logo">
+                            <a href=""><b>DEMO</b> WEB</a>
+                        </div>
+                        <!-- /.login-logo -->
+                        <div class="login-box-body">
+                          
+                            <p class="login-box-msg">Sign in to start your session</p>
+
+                            <h:form id="logForm1" role="form">
+                                   <div >                            
+                            <h:messages styleClass="alert alert-danger fade in" id="messages" showSummary="false" showDetail="true">
+                            </h:messages> 
+                        </div>
+                                <div class="form-group has-feedback">
+                                    <input jsf:required="true" type="text" class="form-control" placeholder="Username"
+                                           name="username"  id="username" jsf:validatorMessage="Username Required" jsf:label="Username"
+                                           jsf:value="#{userloginBean.name}" />
+                                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <input required="true" name="password" id="password" type="password" class="form-control" placeholder="Password"
+                                           jsf:value="#{userloginBean.password}" jsf:validatorMessage="Password Required" jsf:label="Password"/>
+                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                       
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-xs-4">
+
+                                        <!-- <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                                        -->
+
+                                        <button jsf:action="#{userloginBean.login}" class="btn btn-primary btn-block btn-flat" >
+                                            <f:ajax execute="@form" render="@form"/>
+                                            Sign In</button>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                            </h:form>
+
+
+
+                        </div>
+                        <!-- /.login-box-body -->
+                    </div>
+
+
+
+                </ui:define>
+
+
+
+            </ui:composition>
+
+            <script>
+                $(function () {
+                    $('input').iCheck({
+                        checkboxClass: 'icheckbox_square-blue',
+                        radioClass: 'iradio_square-blue',
+                        increaseArea: '20%' // optional
+                    });
+                });
+            </script>
+        </body>
+    </f:view>
+</html>
